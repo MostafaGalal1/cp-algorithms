@@ -1,4 +1,6 @@
 target
+.venv/
+__pycache__/
 *.swp
 *.sublime-project
 *.sublime-workspace

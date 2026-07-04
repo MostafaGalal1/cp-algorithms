@@ -69,7 +69,8 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       enabled: !ENV [MKDOCS_ENABLE_GIT_REVISION_DATE, False]
-  - git-authors
+  - git-authors:
+      enabled: !ENV [MKDOCS_ENABLE_GIT_AUTHORS, True]
   - git-committers:
       repository: cp-algorithms/cp-algorithms
       docs_path: src/
@@ -77,7 +78,9 @@ plugins:
       enabled: !ENV [MKDOCS_ENABLE_GIT_COMMITTERS, False]
       branch: !ENV [MKDOCS_GIT_COMMITERS_BRANCH, main]
   - macros
-  - rss
+  - rss:
+      enabled: !ENV [MKDOCS_ENABLE_RSS, True]
+      use_git: !ENV [MKDOCS_RSS_USE_GIT, True]
 
 extra:
   social:

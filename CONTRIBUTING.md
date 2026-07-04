@@ -127,11 +127,19 @@ You can preview changes locally before pushing them to GitHub. To do this:
 2. Install dependencies and serve the site:
 
     ```console
+    python3 -m venv .venv
+    source .venv/bin/activate
     scripts/install-mkdocs.sh # requires pip
     mkdocs serve
     ```
 
    This will run the site locally so you can preview your changes. Note that some features are disabled in local builds.
+
+   If you are working from a downloaded source archive instead of a Git clone, disable the plugins that require local Git metadata:
+
+    ```console
+    MKDOCS_ENABLE_GIT_AUTHORS=False MKDOCS_ENABLE_RSS=False mkdocs serve
+    ```
 
 ### Optional Plugins
 

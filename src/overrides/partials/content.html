@@ -29,8 +29,10 @@ Describe the issue of this article in detail.
 <!-- Construct the dict of author's contribution percentage -->
 {% set contribs = {} %}
 {% set id_for_email = {} %}
+{% set committers_list = committers if committers is defined else [] %}
+{% set page_authors = git_info.page_authors if git_info is defined and git_info.page_authors is defined else [] %}
 
-{% for author in committers %}
+{% for author in committers_list %}
   {% do contribs.setdefault(author.login, {}) %}
   {% do contribs[author.login].update({
     'name':author.login,
@@ -41,7 +43,7 @@ Describe the issue of this article in detail.
   {% endfor %}
 {% endfor %}
 
-{% for author in git_info.page_authors %}
+{% for author in page_authors %}
   {% set id = id_for_email[author.email] if id_for_email[author.email] else author.name %}
   {% do contribs.setdefault(id, {'name':id, 'url':'#'}) %}
   {% do contribs[id].__setitem__(

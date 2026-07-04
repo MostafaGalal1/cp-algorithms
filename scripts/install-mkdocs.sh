@@ -1,5 +1,10 @@
 #!/bin/bash
 
+committers_plugin="plugins/mkdocs-git-committers-plugin-2"
+if [[ ! -f "$committers_plugin/setup.py" && ! -f "$committers_plugin/pyproject.toml" ]]; then
+    committers_plugin="git+https://github.com/adamant-pwn/mkdocs-git-committers-plugin-2.git"
+fi
+
 pip install \
     "mkdocs-material>=9.0.2" \
     mkdocs-toggle-sidebar-plugin \
@@ -9,4 +14,4 @@ pip install \
     mkdocs-git-revision-date-localized-plugin \
     mkdocs-simple-hooks \
     mkdocs-rss-plugin \
-    plugins/mkdocs-git-committers-plugin-2
+    "$committers_plugin"
